@@ -468,6 +468,18 @@ static struct snd_soc_dai_link dra7xx_evm_link = {
 		   SND_SOC_DAIFMT_IB_NF,
 };
 
+static struct snd_soc_dai_link am335x_evm_dai = {
+    .name = "INCAS3_ADM",
+    .stream_name = "i3_adm",
+    .codec_dai_name = "adm_mod-hifi",
+    .ops = &evm_ops,
+	.dai_fmt = SND_SOC_DAIFMT_DSP_B | SND_SOC_DAIFMT_CBM_CFM |
+		   SND_SOC_DAIFMT_NB_NF,
+    //.cpu_dai_name = "davinci-mcasp.0",
+    //.codec_name = "spi1.1",
+    //.platform_name = "davinci-mcasp.0",
+};
+
 static const struct of_device_id davinci_evm_dt_ids[] = {
 	{
 		.compatible = "ti,da830-evm-audio",
@@ -476,6 +488,11 @@ static const struct of_device_id davinci_evm_dt_ids[] = {
 	{
 		.compatible = "ti,beaglebone-black-audio",
 		.data = &evm_dai_tda998x_hdmi,
+	},
+
+	{
+		.compatible = "ti,beaglebone-black-audio-incas3",
+		.data = &am335x_evm_dai,
 	},
 	{
 		.compatible = "ti,dra7xx-evm-audio",

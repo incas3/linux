@@ -540,6 +540,10 @@ config SND_SOC_WM9712
 config SND_SOC_WM9713
 	tristate
 
+config SND_SOC_ADM_MOD
+	tristate "INCAS3 Amplifier Digitizer Module support"
+	depends on SPI
+
 # Amp
 config SND_SOC_LM4857
 	tristate
